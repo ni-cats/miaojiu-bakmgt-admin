@@ -1,0 +1,54 @@
+spring:
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 100MB
+  datasource:
+    #    url: jdbc:mysql://localhost:13306/dbtest1
+    url: jdbc:mysql://localhost:13306/dbtest1?characterEncoding=utf-8&serverTimezone=UTC&useSSL=false
+    username: root
+    password: jiang
+    #    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+
+
+    druid:
+      filters: stat,wall
+      stat-view-servlet:
+        enabled: true
+        login-username: jiang
+        login-password: jiang
+        reset-enable: false
+
+      web-stat-filter:
+        enabled: true
+
+  jdbc:
+    template:
+      query-timeout: 3
+  redis:
+    url: redis://ni_cats:Jiang5537@r-7xv70pp3qisth6ah5rpd.redis.rds.aliyuncs.com:6379
+  boot:
+    admin:
+      client:
+        url: http://localhost:8888
+        instance:
+          prefer-ip: true
+  application:
+    name: boot-05-web-admin
+
+mybatis:
+#  config-location: classpath:mybatis/mybatis-config.xml
+#  mapper-locations: classpath:mybatis/mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+
+management:
+  endpoints:
+    enabled-by-default: true
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
